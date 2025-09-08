@@ -31,9 +31,18 @@
       margin-bottom: 8px;
       cursor: pointer;
     }
-    .explanation {
-      display: none;
+    .feedback {
       margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .explanation {
+      margin-top: 5px;
       font-style: italic;
       color: #555;
     }
@@ -49,13 +58,22 @@
     button:hover {
       background: #0056b3;
     }
+    #final-result {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
   <h1>Quiz de Lógica de Programação em JavaScript</h1>
-  <p>Responda as questões abaixo e clique em "Ver Explicação" para entender melhor cada conceito.</p>
+  <p>Responda as questões abaixo e clique em "Ver Explicação" para saber se acertou. Ao final, clique em "Finalizar Quiz" para ver seu desempenho.</p>
 
   <div id="quiz"></div>
+  <button onclick="finalizarQuiz()">Finalizar Quiz</button>
+  <div id="final-result"></div>
 
   <script>
     const questions = [
@@ -88,38 +106,10 @@
         options: ["Uma estrutura condicional", "Um bloco de código reutilizável que realiza uma tarefa específica", "Um operador lógico", "Um tipo de dado que armazena múltiplos valores"],
         answer: 1,
         explanation: "Funções são blocos de código que podem ser definidos uma vez e executados várias vezes."
-      },
-      {
-        text: "Qual palavra-chave é usada para declarar uma variável que pode ser atualizada posteriormente?",
-        options: ["let", "var", "static", "const"],
-        answer: 0,
-        explanation: "A palavra-chave 'let' permite declarar variáveis cujo valor pode ser alterado."
-      },
-      {
-        text: "Qual estrutura é mais adequada para armazenar uma coleção ordenada de elementos?",
-        options: ["String", "Object", "Boolean", "Array"],
-        answer: 3,
-        explanation: "Arrays são estruturas que armazenam coleções ordenadas de elementos, acessíveis por índices."
-      },
-      {
-        text: "O que o método 'console.log()' faz em JavaScript?",
-        options: ["Cria uma variável", "Exibe uma mensagem de erro", "Imprime informações no console do navegador", "Executa uma função"],
-        answer: 2,
-        explanation: "O método 'console.log()' é usado para imprimir mensagens no console, sendo útil para depuração."
-      },
-      {
-        text: "Qual é o resultado da expressão: 5 + '5' em JavaScript?",
-        options: ["'55'", "10", "undefined", "Erro"],
-        answer: 0,
-        explanation: "Quando um número é somado a uma string, o JavaScript converte o número em string e realiza a concatenação."
-      },
-      {
-        text: "Qual conceito permite que funções sejam passadas como argumentos para outras funções?",
-        options: ["Callback", "Hoisting", "Escopo léxico", "Closure"],
-        answer: 0,
-        explanation: "Callbacks são funções passadas como argumentos para outras funções, permitindo a execução de lógica personalizada."
       }
     ];
+
+    let respostasCorretas = new Array(questions.length).fill(false);
 
     const quizContainer = document.getElementById("quiz");
 
@@ -150,17 +140,65 @@
       const btn = document.createElement("button");
       btn.textContent = "Ver Explicação";
       btn.onclick = () => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const feedback = div.querySelector(".feedback");
+        const explanation = div.querySelector(".explanation");
+
+        if (!selected) {
+          feedback.textContent = "⚠️ Por favor, selecione uma opção.";
+          feedback.className = "feedback incorrect";
+          explanation.style.display = "none";
+          return;
+        }
+
+        const selectedValue = parseInt(selected.value);
+        if (selectedValue === q.answer) {
+          feedback.textContent = "✅ Correto!";
+          feedback.className = "feedback correct";
+          respostasCorretas[index] = true;
+        } else {
+          feedback.textContent = "❌ Incorreto.";
+          feedback.className = "feedback incorrect";
+          respostasCorretas[index] = false;
+        }
+
         explanation.style.display = "block";
       };
       div.appendChild(btn);
 
+      const feedback = document.createElement("div");
+      feedback.className = "feedback";
+      div.appendChild(feedback);
+
       const explanation = document.createElement("div");
       explanation.className = "explanation";
+      explanation.style.display = "none";
       explanation.textContent = `💡 Explicação: ${q.explanation}`;
       div.appendChild(explanation);
 
       quizContainer.appendChild(div);
     });
+
+    function finalizarQuiz() {
+      const total = questions.length;
+      const acertos = respostasCorretas.filter(Boolean).length;
+      const resultado = document.getElementById("final-result");
+
+      let mensagem = "";
+      if (acertos === total) {
+        mensagem = "🎉 Parabéns! Você acertou todas as questões!";
+      } else if (acertos >= total * 0.7) {
+        mensagem = "👏 Muito bem! Continue praticando para alcançar a perfeição.";
+      } else {
+        mensagem = "💡 Continue estudando! A prática leva à maestria.";
+      }
+
+      resultado.innerHTML = `
+        <h2>Resultado Final</h2>
+        <p>Você acertou <strong>${acertos}</strong> de <strong>${total}</strong> questões.</p>
+        <p>${mensagem}</p>
+      `;
+    }
   </script>
 </body>
 </html>

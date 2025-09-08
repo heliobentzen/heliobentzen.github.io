@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz de Lógica em JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #333;
+    }
+    .question {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .question h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .explanation {
+      display: none;
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz de Lógica de Programação em JavaScript</h1>
+  <p>Responda as questões abaixo e clique em "Ver Explicação" para entender melhor cada conceito.</p>
+
+  <div id="quiz"></div>
+
+  <script>
+    const questions = [
+      {
+        text: "Qual é o principal objetivo da lógica de programação em JavaScript no desenvolvimento frontend?",
+        options: ["Gerenciar bancos de dados diretamente", "Criar estilos visuais para páginas web", "Definir a estrutura HTML da página", "Manipular dados e controlar o fluxo de execução"],
+        answer: 3,
+        explanation: "A lógica de programação em JavaScript é usada para manipular dados, controlar o fluxo de execução (como decisões e repetições) e interagir com elementos da interface."
+      },
+      {
+        text: "Qual estrutura de controle é usada para executar um bloco de código repetidamente enquanto uma condição for verdadeira?",
+        options: ["while", "switch", "if", "try"],
+        answer: 0,
+        explanation: "A estrutura 'while' permite repetir um bloco de código enquanto a condição especificada for verdadeira."
+      },
+      {
+        text: "Em JavaScript, qual tipo de dado é usado para armazenar uma sequência de caracteres?",
+        options: ["String", "Number", "Array", "Boolean"],
+        answer: 0,
+        explanation: "O tipo 'String' é utilizado para armazenar textos, ou seja, sequências de caracteres."
+      },
+      {
+        text: "Qual operador é usado para comparar valores e tipos em JavaScript?",
+        options: ["===", "=", "==", "!="],
+        answer: 0,
+        explanation: "O operador '===' compara tanto o valor quanto o tipo dos operandos, garantindo uma comparação mais precisa."
+      },
+      {
+        text: "O que é uma função em JavaScript?",
+        options: ["Uma estrutura condicional", "Um bloco de código reutilizável que realiza uma tarefa específica", "Um operador lógico", "Um tipo de dado que armazena múltiplos valores"],
+        answer: 1,
+        explanation: "Funções são blocos de código que podem ser definidos uma vez e executados várias vezes."
+      },
+      {
+        text: "Qual palavra-chave é usada para declarar uma variável que pode ser atualizada posteriormente?",
+        options: ["let", "var", "static", "const"],
+        answer: 0,
+        explanation: "A palavra-chave 'let' permite declarar variáveis cujo valor pode ser alterado."
+      },
+      {
+        text: "Qual estrutura é mais adequada para armazenar uma coleção ordenada de elementos?",
+        options: ["String", "Object", "Boolean", "Array"],
+        answer: 3,
+        explanation: "Arrays são estruturas que armazenam coleções ordenadas de elementos, acessíveis por índices."
+      },
+      {
+        text: "O que o método 'console.log()' faz em JavaScript?",
+        options: ["Cria uma variável", "Exibe uma mensagem de erro", "Imprime informações no console do navegador", "Executa uma função"],
+        answer: 2,
+        explanation: "O método 'console.log()' é usado para imprimir mensagens no console, sendo útil para depuração."
+      },
+      {
+        text: "Qual é o resultado da expressão: 5 + '5' em JavaScript?",
+        options: ["'55'", "10", "undefined", "Erro"],
+        answer: 0,
+        explanation: "Quando um número é somado a uma string, o JavaScript converte o número em string e realiza a concatenação."
+      },
+      {
+        text: "Qual conceito permite que funções sejam passadas como argumentos para outras funções?",
+        options: ["Callback", "Hoisting", "Escopo léxico", "Closure"],
+        answer: 0,
+        explanation: "Callbacks são funções passadas como argumentos para outras funções, permitindo a execução de lógica personalizada."
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+
+      const title = document.createElement("h2");
+      title.textContent = `Questão ${index + 1}: ${q.text}`;
+      div.appendChild(title);
+
+      const optionsDiv = document.createElement("div");
+      optionsDiv.className = "options";
+
+      q.options.forEach((opt, i) => {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `q${index}`;
+        input.value = i;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(` ${opt}`));
+        optionsDiv.appendChild(label);
+      });
+
+      div.appendChild(optionsDiv);
+
+      const btn = document.createElement("button");
+      btn.textContent = "Ver Explicação";
+      btn.onclick = () => {
+        explanation.style.display = "block";
+      };
+      div.appendChild(btn);
+
+      const explanation = document.createElement("div");
+      explanation.className = "explanation";
+      explanation.textContent = `💡 Explicação: ${q.explanation}`;
+      div.appendChild(explanation);
+
+      quizContainer.appendChild(div);
+    });
+  </script>
+</body>
+</html>

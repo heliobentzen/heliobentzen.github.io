@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hélio Bentzen — Professor do IFPE Campus Palmares. Engenheiro pela Escola Politécnica de Pernambuco (UPE) e Mestre pelo CIn-UFPE." />
+  <meta name="author" content="Hélio Bentzen" />
+  <meta property="og:title" content="Hélio Bentzen — Professor IFPE" />
+  <meta property="og:description" content="Página profissional de Hélio Bentzen, professor do IFPE Campus Palmares." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://heliobentzen.github.io/" />
+  <title>Hélio Bentzen — Professor IFPE Campus Palmares</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            primary: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81',950:'#1e1b4b' },
+            accent:  { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease-out forwards',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn:  { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            float:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    [x-cloak] { display: none !important; }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass {
+      background: rgba(15,23,42,0.7);
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .dark .card-hover:hover {
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .dark .blob { opacity: 0.15; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-on-scroll { opacity: 1; transform: none; transition: none; }
+      .card-hover:hover { transform: none; }
+      .blob { display: none; }
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#hero" class="text-xl font-bold gradient-text">HB</a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Sobre</a>
+          <a href="#education" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Formação</a>
+          <a href="#disciplines" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Disciplinas</a>
+          <a href="#projects" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Projetos</a>
+          <a href="#contact" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Contato</a>
+          <button id="theme-toggle" aria-label="Alternar tema" class="ml-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden text-gray-600"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center gap-2">
+          <button id="theme-toggle-mobile" aria-label="Alternar tema" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden text-gray-600"></i>
+          </button>
+          <button id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-gray-200 dark:border-slate-700">
+      <div class="px-4 py-3 space-y-1">
+        <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Sobre</a>
+        <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Formação</a>
+        <a href="#disciplines" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Disciplinas</a>
+        <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Projetos</a>
+        <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <!-- Background blobs -->
+    <div class="blob w-96 h-96 bg-primary-400 top-20 -left-48 animate-float"></div>
+    <div class="blob w-80 h-80 bg-accent-400 bottom-20 right-0 animate-float" style="animation-delay:-3s"></div>
+    <div class="blob w-64 h-64 bg-purple-400 top-1/2 left-1/3 animate-float" style="animation-delay:-1.5s"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Text -->
+        <div class="animate-fade-in">
+          <p class="text-primary-600 dark:text-primary-400 font-semibold text-lg mb-2">Olá, eu sou</p>
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6">
+            Hélio<br /><span class="gradient-text">Bentzen</span>
+          </h1>
+          <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+            Professor do <strong class="text-gray-800 dark:text-gray-200">IFPE Campus Palmares</strong>. Engenheiro e Mestre em Ciência da Computação.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#about" class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25">
+              <i data-lucide="user" class="w-5 h-5"></i> Sobre mim
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-slate-600 px-6 py-3 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              <i data-lucide="mail" class="w-5 h-5"></i> Contato
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex gap-4 mt-8">
+            <a href="https://github.com/heliobentzen" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 rounded-xl bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+              <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener noreferrer" aria-label="Lattes" class="p-3 rounded-xl bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            </a>
+            <a href="mailto:helio.bentzen@palmares.ifpe.edu.br" aria-label="Email" class="p-3 rounded-xl bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Avatar -->
+        <div class="flex justify-center lg:justify-end animate-fade-in" style="animation-delay:0.3s">
+          <div class="relative">
+            <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 p-1">
+              <div class="w-full h-full rounded-full bg-gray-50 dark:bg-slate-950 flex items-center justify-center">
+                <span class="text-7xl sm:text-8xl font-black gradient-text select-none">HB</span>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 -right-4 bg-white dark:bg-slate-800 rounded-2xl px-4 py-2 shadow-lg border border-gray-200 dark:border-slate-700">
+              <p class="text-sm font-semibold text-primary-600 dark:text-primary-400">📍 Palmares, PE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="relative py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Sobre <span class="gradient-text">Mim</span></h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Biography -->
+        <div class="animate-on-scroll">
+          <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i data-lucide="book-open" class="w-6 h-6 text-primary-500"></i> Biografia
+          </h3>
+          <div class="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p>
+              Sou professor no <strong class="text-gray-800 dark:text-gray-200">Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco (IFPE) — Campus Palmares</strong>, atuando na área de Informática e Computação.
+            </p>
+            <p>
+              Graduado em <strong class="text-gray-800 dark:text-gray-200">Engenharia da Computação</strong> pela Escola Politécnica de Pernambuco (POLI/UPE) em 2009 e Mestre em <strong class="text-gray-800 dark:text-gray-200">Ciência da Computação</strong> pelo Centro de Informática da Universidade Federal de Pernambuco (CIn/UFPE) em 2013.
+            </p>
+            <p>
+              Tenho interesse em desenvolvimento de software, aplicações móveis, inteligência artificial, robótica educacional e metodologias de ensino aplicadas à computação. Trabalho com disciplinas nas áreas de programação, desenvolvimento web e mobile, e tópicos avançados em TI.
+            </p>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="animate-on-scroll grid grid-cols-2 gap-4" style="transition-delay:0.2s">
+          <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center card-hover">
+            <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="briefcase" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">IFPE</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Campus Palmares</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center card-hover">
+            <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">Mestrado</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">CIn/UFPE — 2013</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center card-hover">
+            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="code-2" class="w-6 h-6 text-purple-600 dark:text-purple-400"></i>
+            </div>
+            <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">7+</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Disciplinas</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center card-hover">
+            <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <i data-lucide="folder-git-2" class="w-6 h-6 text-orange-600 dark:text-orange-400"></i>
+            </div>
+            <p class="text-2xl font-bold text-gray-800 dark:text-gray-100">18+</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Repositórios</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERESTS SECTION ===== -->
+  <section class="py-24 bg-gray-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Áreas de <span class="gradient-text">Interesse</span></h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="animate-on-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center card-hover border border-gray-200 dark:border-slate-800">
+          <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="smartphone" class="w-7 h-7 text-blue-600 dark:text-blue-400"></i>
+          </div>
+          <p class="text-sm font-semibold">Desenvolvimento Mobile</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center card-hover border border-gray-200 dark:border-slate-800">
+          <div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="globe" class="w-7 h-7 text-green-600 dark:text-green-400"></i>
+          </div>
+          <p class="text-sm font-semibold">Desenvolvimento Web</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center card-hover border border-gray-200 dark:border-slate-800">
+          <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="brain" class="w-7 h-7 text-purple-600 dark:text-purple-400"></i>
+          </div>
+          <p class="text-sm font-semibold">Inteligência Artificial</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center card-hover border border-gray-200 dark:border-slate-800">
+          <div class="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="bot" class="w-7 h-7 text-red-600 dark:text-red-400"></i>
+          </div>
+          <p class="text-sm font-semibold">Robótica Educacional</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center card-hover border border-gray-200 dark:border-slate-800">
+          <div class="w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="presentation" class="w-7 h-7 text-yellow-600 dark:text-yellow-400"></i>
+          </div>
+          <p class="text-sm font-semibold">Ensino de Computação</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center card-hover border border-gray-200 dark:border-slate-800">
+          <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="server" class="w-7 h-7 text-indigo-600 dark:text-indigo-400"></i>
+          </div>
+          <p class="text-sm font-semibold">Engenharia de Software</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION SECTION ===== -->
+  <section id="education" class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Formação <span class="gradient-text">Acadêmica</span></h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <!-- Timeline -->
+        <div class="relative">
+          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500"></div>
+
+          <!-- Mestrado -->
+          <div class="animate-on-scroll relative flex items-start gap-6 mb-12">
+            <div class="relative z-10 w-16 h-16 rounded-2xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center flex-shrink-0 border-4 border-white dark:border-slate-900">
+              <i data-lucide="award" class="w-7 h-7 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 flex-1 card-hover border border-gray-200 dark:border-slate-700">
+              <span class="inline-block bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-bold px-3 py-1 rounded-full mb-3">2011 — 2013</span>
+              <h3 class="text-xl font-bold mb-1">Mestrado em Ciência da Computação</h3>
+              <p class="text-primary-600 dark:text-primary-400 font-semibold mb-2">Centro de Informática — UFPE</p>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                Universidade Federal de Pernambuco. Pesquisa na área de Ciência da Computação no renomado Centro de Informática (CIn).
+              </p>
+            </div>
+          </div>
+
+          <!-- Graduação -->
+          <div class="animate-on-scroll relative flex items-start gap-6" style="transition-delay:0.15s">
+            <div class="relative z-10 w-16 h-16 rounded-2xl bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center flex-shrink-0 border-4 border-white dark:border-slate-900">
+              <i data-lucide="graduation-cap" class="w-7 h-7 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 flex-1 card-hover border border-gray-200 dark:border-slate-700">
+              <span class="inline-block bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-bold px-3 py-1 rounded-full mb-3">2004 — 2009</span>
+              <h3 class="text-xl font-bold mb-1">Engenharia da Computação</h3>
+              <p class="text-accent-600 dark:text-accent-400 font-semibold mb-2">Escola Politécnica de Pernambuco — UPE</p>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                Universidade de Pernambuco. Formação sólida em engenharia com ênfase em computação, hardware e software.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DISCIPLINES SECTION ===== -->
+  <section id="disciplines" class="py-24 bg-gray-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Disciplinas e <span class="gradient-text">Repositórios</span></h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Material de apoio e repositórios das disciplinas que leciono no IFPE Campus Palmares.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Desenvolvimento Mobile Android -->
+        <div class="animate-on-scroll">
+          <a href="https://github.com/heliobentzen/mobileandroid" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="smartphone" class="w-6 h-6 text-green-600 dark:text-green-400"></i>
+              </div>
+              <div class="flex items-center gap-1 text-yellow-500">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <span class="text-sm font-semibold">69</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Desenvolvimento Mobile Android</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Curso de desenvolvimento mobile com Android utilizando Kotlin. Material completo com exemplos práticos.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-purple-500 rounded-full"></span> Kotlin
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Frontend / React -->
+        <div class="animate-on-scroll" style="transition-delay:0.1s">
+          <a href="https://github.com/heliobentzen/frontend" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="layout" class="w-6 h-6 text-yellow-600 dark:text-yellow-400"></i>
+              </div>
+              <div class="flex items-center gap-1 text-yellow-500">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <span class="text-sm font-semibold">16</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Frontend com React</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Repositório voltado ao básico de frontend com ênfase em React. HTML, CSS, JavaScript e ReactJS.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-yellow-500 rounded-full"></span> JavaScript
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Mobile React Native -->
+        <div class="animate-on-scroll" style="transition-delay:0.2s">
+          <a href="https://github.com/heliobentzen/mobilereactnative" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="tablet-smartphone" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Mobile com React Native</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Repositório voltado ao básico de React Native para desenvolvimento de aplicações móveis multiplataforma.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span> React Native
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- POO Java -->
+        <div class="animate-on-scroll" style="transition-delay:0.05s">
+          <a href="https://github.com/heliobentzen/poo-java" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="boxes" class="w-6 h-6 text-red-600 dark:text-red-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Programação Orientada a Objetos</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Curso de Programação Orientada a Objetos com Java. Conceitos fundamentais, exercícios e projetos práticos.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span> Java
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Introdução à Computação -->
+        <div class="animate-on-scroll" style="transition-delay:0.15s">
+          <a href="https://github.com/heliobentzen/introducao-computacao" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="monitor" class="w-6 h-6 text-indigo-600 dark:text-indigo-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Introdução à Computação</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Disciplina introdutória sobre fundamentos da computação, lógica de programação e pensamento computacional.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Fundamentos
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Inteligência Artificial -->
+        <div class="animate-on-scroll" style="transition-delay:0.25s">
+          <a href="https://github.com/heliobentzen/ia" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="brain" class="w-6 h-6 text-purple-600 dark:text-purple-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Inteligência Artificial</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Material sobre Inteligência Artificial, algoritmos de busca, aprendizado de máquina e aplicações práticas.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-purple-500 rounded-full"></span> IA / ML
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Tópicos Avançados em TI -->
+        <div class="animate-on-scroll" style="transition-delay:0.1s">
+          <a href="https://github.com/heliobentzen/ta-ti" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="rocket" class="w-6 h-6 text-teal-600 dark:text-teal-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Tópicos Avançados em TI</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Disciplina sobre temas emergentes e avançados em Tecnologia da Informação.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-teal-500 rounded-full"></span> TI Avançada
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- JUnit -->
+        <div class="animate-on-scroll" style="transition-delay:0.2s">
+          <a href="https://github.com/heliobentzen/aula-junit" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="test-tubes" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Testes com JUnit 5</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Conceitos e práticas de testes unitários com JUnit 5 para disciplinas de engenharia de software.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Java / JUnit
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- React Project -->
+        <div class="animate-on-scroll" style="transition-delay:0.3s">
+          <a href="https://github.com/heliobentzen/reactproject-aulas" target="_blank" rel="noopener noreferrer" class="block bg-white dark:bg-slate-900 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-800 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="atom" class="w-6 h-6 text-cyan-600 dark:text-cyan-400"></i>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Projeto React — Aulas</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Projeto React utilizado em aulas práticas. TypeScript e componentes modernos do ecossistema React.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span class="w-2 h-2 bg-cyan-500 rounded-full"></span> TypeScript
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section id="projects" class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Outros <span class="gradient-text">Projetos</span></h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Projetos de pesquisa, extensão e iniciativas pessoais.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Projeto Ninho -->
+        <div class="animate-on-scroll">
+          <a href="https://github.com/heliobentzen/Ninho" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-700 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="egg" class="w-6 h-6 text-amber-600 dark:text-amber-400"></i>
+              </div>
+              <span class="text-xs font-semibold bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-2.5 py-1 rounded-full">Projeto</span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Projeto Ninho</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Prática do Projeto Ninho — aplicação web desenvolvida com EJS como parte de projeto educacional.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                <span class="w-2 h-2 bg-yellow-500 rounded-full"></span> EJS
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Robótica -->
+        <div class="animate-on-scroll" style="transition-delay:0.1s">
+          <a href="https://github.com/heliobentzen/robotica" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-700 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="cpu" class="w-6 h-6 text-rose-600 dark:text-rose-400"></i>
+              </div>
+              <span class="text-xs font-semibold bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 px-2.5 py-1 rounded-full">Pesquisa</span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Robótica</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Projeto de robótica educacional com programação em C para microcontroladores e sistemas embarcados.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                <span class="w-2 h-2 bg-gray-500 rounded-full"></span> C
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Robótica Livre -->
+        <div class="animate-on-scroll" style="transition-delay:0.2s">
+          <a href="https://github.com/heliobentzen/robotica-livre" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-700 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-lime-100 dark:bg-lime-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="circuit-board" class="w-6 h-6 text-lime-600 dark:text-lime-400"></i>
+              </div>
+              <span class="text-xs font-semibold bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 px-2.5 py-1 rounded-full">Extensão</span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Robótica Livre</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Projeto de robótica livre (2017-2020) — iniciativa de extensão com robótica educacional e materiais acessíveis.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                <span class="w-2 h-2 bg-lime-500 rounded-full"></span> Arduino
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Diag Helper -->
+        <div class="animate-on-scroll" style="transition-delay:0.05s">
+          <a href="https://github.com/heliobentzen/diag-helper" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-700 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="wrench" class="w-6 h-6 text-sky-600 dark:text-sky-400"></i>
+              </div>
+              <div class="flex items-center gap-1 text-yellow-500">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <span class="text-sm font-semibold">8</span>
+              </div>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Diag Helper</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Ferramenta utilitária em JavaScript para auxiliar em diagnósticos e resolução de problemas.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                <span class="w-2 h-2 bg-yellow-400 rounded-full"></span> JavaScript
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Unity Study -->
+        <div class="animate-on-scroll" style="transition-delay:0.15s">
+          <a href="https://github.com/heliobentzen/unity-study" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 card-hover border border-gray-200 dark:border-slate-700 h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 bg-violet-100 dark:bg-violet-900/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="gamepad-2" class="w-6 h-6 text-violet-600 dark:text-violet-400"></i>
+              </div>
+              <span class="text-xs font-semibold bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 px-2.5 py-1 rounded-full">Estudo</span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Unity Study</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Estudos e experimentos de desenvolvimento de jogos com Unity e C#.</p>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                <span class="w-2 h-2 bg-violet-500 rounded-full"></span> C# / Unity
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- GitHub Profile Link -->
+        <div class="animate-on-scroll" style="transition-delay:0.25s">
+          <a href="https://github.com/heliobentzen?tab=repositories" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950/30 dark:to-accent-950/30 rounded-2xl p-6 card-hover border-2 border-dashed border-primary-300 dark:border-primary-700 h-full min-h-[200px]">
+            <div class="w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+              <i data-lucide="github" class="w-8 h-8 text-gray-800 dark:text-gray-200"></i>
+            </div>
+            <p class="font-bold text-lg text-gray-800 dark:text-gray-200">Ver todos os repositórios</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">github.com/heliobentzen</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS / TECHNOLOGIES ===== -->
+  <section class="py-24 bg-gray-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Tecnologias e <span class="gradient-text">Ferramentas</span></h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="animate-on-scroll flex flex-wrap justify-center gap-4">
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Java</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Kotlin</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">JavaScript</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">TypeScript</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">React</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">React Native</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Android</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">HTML / CSS</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Node.js</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Python</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">C / C++</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Git / GitHub</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Arduino</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">Unity / C#</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">JUnit 5</span>
+        <span class="px-5 py-2.5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-slate-800 text-sm font-semibold hover:border-primary-400 dark:hover:border-primary-500 transition-colors card-hover">SQL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="relative py-24 bg-white dark:bg-slate-900 overflow-hidden">
+    <div class="blob w-80 h-80 bg-primary-300 -bottom-40 -right-40"></div>
+    <div class="blob w-64 h-64 bg-accent-300 -top-32 -left-32"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="animate-on-scroll text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Entre em <span class="gradient-text">Contato</span></h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Fique à vontade para entrar em contato comigo para colaborações, orientações ou dúvidas.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mt-4"></div>
+      </div>
+
+      <div class="animate-on-scroll grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <!-- Email -->
+        <a href="mailto:helio.bentzen@palmares.ifpe.edu.br" class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 text-center card-hover border border-gray-200 dark:border-slate-700">
+          <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="mail" class="w-8 h-8 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Email</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 break-all">helio.bentzen@palmares.ifpe.edu.br</p>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/heliobentzen" target="_blank" rel="noopener noreferrer" class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 text-center card-hover border border-gray-200 dark:border-slate-700">
+          <div class="w-16 h-16 bg-gray-200 dark:bg-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="github" class="w-8 h-8 text-gray-800 dark:text-gray-200"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">GitHub</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">github.com/heliobentzen</p>
+        </a>
+
+        <!-- Location -->
+        <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 text-center card-hover border border-gray-200 dark:border-slate-700">
+          <div class="w-16 h-16 bg-accent-100 dark:bg-accent-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="map-pin" class="w-8 h-8 text-accent-600 dark:text-accent-400"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Localização</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">IFPE Campus Palmares<br />Palmares, PE — Brasil</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-100 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          &copy; <span id="year"></span> Hélio Bentzen. Todos os direitos reservados.
+        </p>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/heliobentzen" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+            <i data-lucide="github" class="w-5 h-5"></i>
+          </a>
+          <a href="mailto:helio.bentzen@palmares.ifpe.edu.br" aria-label="Email" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="back-to-top" aria-label="Voltar ao topo" class="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-primary-600 text-white shadow-lg shadow-primary-600/25 opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-primary-700">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Dark Mode ──
+    const getTheme = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const applyTheme = (theme) => {
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      localStorage.setItem('theme', theme);
+    };
+    applyTheme(getTheme());
+
+    const toggleTheme = () => applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
+
+    // ── Mobile Menu ──
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileBtn.setAttribute('aria-expanded', !isOpen);
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    const handleNavScroll = () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('glass', 'shadow-sm', 'border-b', 'border-gray-200', 'dark:border-slate-700');
+      } else {
+        navbar.classList.remove('glass', 'shadow-sm', 'border-b', 'border-gray-200', 'dark:border-slate-700');
+      }
+    };
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll();
+
+    // ── Back to Top ──
+    const backBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        backBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        backBtn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        backBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        backBtn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }, { passive: true });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── Scroll Animations (IntersectionObserver) ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ── Active nav link highlight ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const highlightNav = () => {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+          navLinks.forEach(link => {
+            link.classList.remove('text-primary-600', 'dark:text-primary-400', 'bg-primary-50', 'dark:bg-primary-900/20');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('text-primary-600', 'dark:text-primary-400', 'bg-primary-50', 'dark:bg-primary-900/20');
+            }
+          });
+        }
+      });
+    };
+    window.addEventListener('scroll', highlightNav, { passive: true });
+  </script>
+</body>
+</html>

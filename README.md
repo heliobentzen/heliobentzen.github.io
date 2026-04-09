@@ -1,44 +1,29 @@
-# 🧪 Repositório de Testes e Atividades Frontend
+# 🌐 Hélio Bentzen — Página Profissional
 
-Este repositório contém páginas de demonstração, testes interativos e atividades práticas voltadas ao aprendizado de **HTML**, **CSS** e **JavaScript**, com foco em lógica de programação e construção de interfaces para projetos com **ReactJS**.
+Página profissional de **Hélio Bentzen**, professor do [IFPE Campus Palmares](https://www.ifpe.edu.br/campus/palmares).
 
----
+## 🔗 Acesse
 
-## 📂 Navegação por páginas
+**[heliobentzen.github.io](https://heliobentzen.github.io/)**
 
-Cada página HTML representa um teste ou atividade específica. Você pode abrir diretamente no navegador para visualizar e interagir com os exemplos.
+## 👨‍🏫 Sobre
 
-### 🔹 Testes e Demonstrações
+- **Professor** no Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco (IFPE) — Campus Palmares
+- **Engenheiro da Computação** pela Escola Politécnica de Pernambuco (POLI/UPE) — 2009
+- **Mestre em Ciência da Computação** pelo Centro de Informática da UFPE (CIn/UFPE) — 2013
 
-- [Atividade 1](./q1-js.html) — Introdução à lógica com JavaScript: variáveis, tipos e operadores
-- [Atividade 2](./q2-js.html) — Estruturas de controle: `if`, `else`, `switch`
-- [Atividade 3](./q3-js.html) — Laços de repetição: `for`, `while`
-- [Atividade 4](./q4-js.html) — Manipulação de DOM com JavaScript
-- [Atividade 5](./q5-js.html) — Funções e escopo
-- [Atividade 6](./q6-js.html) — Arrays e objetos
-- [Atividade 7](./q7-js.html) — Eventos e interatividade
-- [Atividade 8](./q8-js.html) — Validação de formulários
+## 🛠️ Tecnologias utilizadas
 
----
+- [Tailwind CSS](https://tailwindcss.com/) via CDN
+- [Lucide Icons](https://lucide.dev/)
+- [Google Fonts (Inter)](https://fonts.google.com/specimen/Inter)
+- HTML5 semântico, responsivo e acessível
+- Dark mode com persistência via localStorage
+- Animações com IntersectionObserver
 
-## 📝 Atividades e Desafios
+## 📂 Estrutura
 
-Além das páginas de teste, este repositório também inclui espaço para atividades práticas e desafios propostos:
-
-- 📁 [`atividades/`](./atividades/) — Pasta com exercícios guiados e desafios extras
-- 📁 [`assets/`](./assets/) — Recursos visuais e arquivos auxiliares (imagens, estilos, scripts)
-
----
-
-## 🚀 Como usar
-
-1. Clone ou baixe este repositório
-2. Abra os arquivos `.html` diretamente no navegador
-3. Explore o código-fonte para entender a lógica aplicada
-4. Modifique, experimente e crie suas próprias versões!
-
----
-
-## 💡 Objetivo
-
-Este material foi criado para apoiar o aprendizado de lógica de programação com JavaScript no contexto de desenvolvimento frontend. Ele serve como base para evoluir até o uso de bibliotecas como **ReactJS**, com foco em interfaces
+```
+├── index.html    # Página principal
+└── README.md     # Este arquivo
+```
